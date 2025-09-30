@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const fetcher = require('../../backend/fetcher');
+const fetcher = require('../fetcher');
 
 // GET /api/top-news
 router.get('/top-news', async (req, res) => {
@@ -38,3 +38,4 @@ router.get('/search', async (req, res) => {
 });
 
 module.exports = router;
+
