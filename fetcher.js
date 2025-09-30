@@ -10,13 +10,14 @@ const feeds = JSON.parse(fs.readFileSync(feedsPath, 'utf8'));
 
 const dbFile = path.join(__dirname, 'db.json');
 const adapter = new JSONFile(dbFile);
-const db = new Low(adapter);
+const db = new Low(adapter, { articles: [] });  // ✅ add default data here
 
 async function initDB() {
   await db.read();
-  db.data = db.data || { articles: [] };
+  if (!db.data) db.data = { articles: [] };     // ✅ safety fallback
   await db.write();
 }
+
 
 function normalizeItem(item, feedMeta) {
   return {
@@ -74,3 +75,4 @@ async function getArticles({ limit = 50, offset = 0, source, category, q }) {
 }
 
 module.exports = { fetchAllOnce, getArticles };
+
