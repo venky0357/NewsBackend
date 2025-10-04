@@ -3,5 +3,41 @@
   { "id": "republic", "name": "Republic World", "url": "https://www.republicworld.com/rss.xml", "category": "general" },
   { "id": "ndtv", "name": "NDTV", "url": "https://feeds.feedburner.com/ndtvnews-top-stories", "category": "general" },
   { "id": "tv9telugu", "name": "TV9 Telugu", "url": "https://www.tv9telugu.com/feed", "category": "regional" },
-  { "id": "news18", "name": "News18", "url": "https://www.news18.com/rss/india.xml", "category": "general" }
+  { "id": "news18", "name": "News18", "url": "https://www.news18.com/rss/india.xml", "category": "general" },
+  { "id": "sports-toi", "name": "Times of India - Sports", "url": "https://timesofindia.indiatimes.com/rssfeeds/4719148.cms", "category": "sports" },
+  { "id": "business-toi", "name": "Times of India - Business", "url": "https://timesofindia.indiatimes.com/rssfeeds/1898055.cms", "category": "business" },
+  { "id": "science-ndtv", "name": "NDTV - Technology", "url": "https://feeds.feedburner.com/ndtvnews-technology", "category": "science" },
+  { "id": "sports-news18", "name": "News18 - Sports", "url": "https://www.news18.com/rss/sports.xml", "category": "sports" },
+  { "id": "business-news18", "name": "News18 - Business", "url": "https://www.news18.com/rss/business.xml", "category": "business" },
+  {
+    "id": "tech-ht",
+    "name": "HT Tech",
+    "url": "https://tech.hindustantimes.com/rss",
+    "category": "technology"
+  },
+  {
+    "id": "tech-observer",
+    "name": "Tech Observer",
+    "url": "https://techobserver.in/rss-feed",
+    "category": "technology"
+  },
+  {
+    "id": "gadgets-360",
+    "name": "Gadgets360",
+    "url": "https://www.gadgets360.com/rss",
+    "category": "technology"
+  },
+  {
+    "id": "nse-stocks",
+    "name": "NSE India Stocks / Corporate News",
+    "url": "https://www.nseindia.com/rss-feed",
+    "category": "stocks"
+  },
+  {
+    "id": "livemint-health",
+    "name": "Livemint Health",
+    "url": "https://www.livemint.com/rss/health",
+    "category": "health"
+  }
 ]
+
