@@ -13,13 +13,13 @@ const feeds = JSON.parse(fs.readFileSync(feedsPath, 'utf8'));
 
 const dbFile = path.join(__dirname, 'db.json');
 const adapter = new JSONFile(dbFile);
-const db = new Low(adapter);
+const db = new Low(adapter, { articles: [] });
 
 async function initDB() {
   await db.read();
-  db.data = db.data || { articles: [] };
   await db.write();
 }
+
 function extractImage(item) {
   return (
     (item.enclosure && item.enclosure.url) ||
