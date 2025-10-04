@@ -3,12 +3,21 @@ const router = express.Router();
 const fetcher = require('../fetcher');
 
 // GET /api/top-news
+// router.get('/top-news', async (req, res) => {
+//   const limit = parseInt(req.query.limit) || 20;
+//   const offset = parseInt(req.query.offset) || 0;
+//   const result = await fetcher.getArticles({ limit, offset });
+//   res.json(result);
+// });
+
 router.get('/top-news', async (req, res) => {
   const limit = parseInt(req.query.limit) || 20;
   const offset = parseInt(req.query.offset) || 0;
-  const result = await fetcher.getArticles({ limit, offset });
+  const category = req.query.category; // ✅ add this line
+  const result = await fetcher.getArticles({ limit, offset, category });
   res.json(result);
 });
+
 
 // GET /api/category/:category
 router.get('/category/:category', async (req, res) => {
@@ -38,4 +47,5 @@ router.get('/search', async (req, res) => {
 });
 
 module.exports = router;
+
 
