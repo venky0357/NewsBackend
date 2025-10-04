@@ -8,6 +8,5 @@
   {"id":"sports-news18","name":"News18 - Sports","url":"https://www.news18.com/rss/sports.xml","category":"sports"},
   {"id":"moneycontrol","name":"Moneycontrol","url":"https://www.moneycontrol.com/rss/latestnews.xml","category":"stocks"},
   {"id":"espncricinfo","name":"ESPNcricinfo","url":"https://www.espncricinfo.com/rss/content/story/feeds/0.xml","category":"sports"},
-  {"id":"the-verge","name":"The Verge","url":"https://www.theverge.com/rss/index.xml","category":"technology"},
+  {"id":"the-verge","name":"The Verge","url":"https://www.theverge.com/rss/index.xml","category":"technology"}
 ]
-
