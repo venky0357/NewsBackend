@@ -1,5 +1,8 @@
 const Parser = require('rss-parser');
-const parser = new Parser({ timeout: 10000 });
+const parser = new Parser({
+  timeout: 20000, // increase timeout to 20 seconds
+  headers: { 'User-Agent': 'Mozilla/5.0' } // mimic a browser
+});
 const fs = require('fs');
 const path = require('path');
 const { Low } = require('lowdb');
@@ -10,12 +13,28 @@ const feeds = JSON.parse(fs.readFileSync(feedsPath, 'utf8'));
 
 const dbFile = path.join(__dirname, 'db.json');
 const adapter = new JSONFile(dbFile);
-const db = new Low(adapter, { articles: [] });  // ✅ add default data here
+const db = new Low(adapter);
 
 async function initDB() {
   await db.read();
-  if (!db.data) db.data = { articles: [] };     // ✅ safety fallback
+  db.data = db.data || { articles: [] };
   await db.write();
+}
+function extractImage(item) {
+  return (
+    (item.enclosure && item.enclosure.url) ||
+    (item['media:content']?.['$']?.url) ||
+    (item['media:thumbnail']?.url) ||
+    (item.thumbnail) ||
+    extractImageFromHTML(item.content || item.contentSnippet || item.description) ||
+    null
+  );
+}
+
+function extractImageFromHTML(html) {
+  if (!html) return null;
+  const match = html.match(/<img[^>]+src="?([^"\s]+)"?[^>]*>/i);
+  return match ? match[1] : null;
 }
 
 
@@ -30,10 +49,7 @@ function normalizeItem(item, feedMeta) {
     sourceId: feedMeta.id,
     category: feedMeta.category || 'general',
     fetchedAt: new Date().toISOString(),
-    image:
-      (item.enclosure && item.enclosure.url) ||
-      (item['media:content']?.['$']?.url) ||
-      null
+    image: extractImage(item)
   };
 }
 
@@ -62,7 +78,7 @@ async function getArticles({ limit = 50, offset = 0, source, category, q }) {
   await initDB();
   let list = db.data.articles;
   if (source) list = list.filter(a => a.sourceId === source || a.source.toLowerCase().includes(source.toLowerCase()));
-  if (category) list = list.filter(a => a.category === category);
+  if (category) list = list.filter(a => a.category.toLowerCase() === category.toLowerCase());
   if (q) {
     const Q = q.toLowerCase();
     list = list.filter(a =>
@@ -75,4 +91,3 @@ async function getArticles({ limit = 50, offset = 0, source, category, q }) {
 }
 
 module.exports = { fetchAllOnce, getArticles };
-
