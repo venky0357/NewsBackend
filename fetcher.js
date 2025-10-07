@@ -1,17 +1,8 @@
-const https = require('https');
 const Parser = require('rss-parser');
 const parser = new Parser({
-  timeout: 20000,
-  headers: {
-    'User-Agent':
-      'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    'Accept': 'application/rss+xml, application/xml;q=0.9, */*;q=0.8',
-    'Accept-Encoding': 'gzip, deflate, br',
-    'Connection': 'keep-alive',
-    'Cache-Control': 'no-cache',
-  },
+  timeout: 20000, // increase timeout to 20 seconds
+  headers: { 'User-Agent': 'Mozilla/5.0' } // mimic a browser
 });
-
 const fs = require('fs');
 const path = require('path');
 const { Low } = require('lowdb');
@@ -67,13 +58,7 @@ async function fetchAllOnce() {
   for (const feed of feeds) {
     try {
       console.log('Fetching from:', feed.name);
-      const parsed = await parser.parseURL(feed.url, {
-        agent: new https.Agent({ rejectUnauthorized: false }),
-      });
-      if (!parsed.items || !Array.isArray(parsed.items)) {
-        console.error(`Invalid RSS structure for ${feed.name}`);
-        continue; // skip this feed
-      }
+      const parsed = await parser.parseURL(feed.url);
       for (const item of parsed.items) {
         const article = normalizeItem(item, feed);
         const exists = db.data.articles.find(a => a.link === article.link || a.id === article.id);
