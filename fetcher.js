@@ -70,6 +70,10 @@ async function fetchAllOnce() {
       const parsed = await parser.parseURL(feed.url, {
         agent: new https.Agent({ rejectUnauthorized: false }),
       });
+      if (!parsed.items || !Array.isArray(parsed.items)) {
+        console.error(`Invalid RSS structure for ${feed.name}`);
+        continue; // skip this feed
+      }
       for (const item of parsed.items) {
         const article = normalizeItem(item, feed);
         const exists = db.data.articles.find(a => a.link === article.link || a.id === article.id);
