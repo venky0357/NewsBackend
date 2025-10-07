@@ -6,10 +6,7 @@
   {"id":"sports-toi","name":"Times of India - Sports","url":"https://timesofindia.indiatimes.com/rssfeeds/4719148.cms","category":"sports"},
   {"id":"business-toi","name":"Times of India - Business","url":"https://timesofindia.indiatimes.com/rssfeeds/1898055.cms","category":"business"},
   {"id":"sports-news18","name":"News18 - Sports","url":"https://www.news18.com/rss/sports.xml","category":"sports"},
-  {"id":"stocks-toi","name":"Times of India","url":"https://timesofindia.indiatimes.com/rssfeeds/1898055.cms","category":"stocks"},
-  {"id":"Nasdaq","name":"Nasdaq","url":"https://www.nasdaq.com/feed/rssoutbound?category=IPOs","category":"stocks"},
-  {"id":"Bloomberg","name":"Bloomberg","url":"https://feeds.bloomberg.com/markets/news.rss","category":"stocks"},
+  {"id":"stocks-toi","name":"Times of India - Stocks","url":"https://timesofindia.indiatimes.com/rssfeeds/1898055.cms","category":"stocks"},
   {"id":"espncricinfo","name":"ESPNcricinfo","url":"https://www.espncricinfo.com/rss/content/story/feeds/0.xml","category":"sports"},
   {"id":"the-verge","name":"The Verge","url":"https://www.theverge.com/rss/index.xml","category":"technology"}
 ]
-
