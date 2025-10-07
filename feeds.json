@@ -14,7 +14,8 @@
   {"id":"Bloomberg","name":"Bloomberg","url":"https://feeds.bloomberg.com/markets/news.rss","category":"stocks"},
   {"id":"espncricinfo","name":"ESPNcricinfo","url":"https://www.espncricinfo.com/rss/content/story/feeds/0.xml","category":"sports"},
   {"id":"the-verge","name":"The Verge","url":"https://www.theverge.com/rss/index.xml","category":"technology"},
-  {"id":"tech-India","name":"India Today","url":"https://www.indiatoday.in/rss/1206574","category":"technology"}
+  {"id":"tech-India","name":"India Today","url":"https://www.indiatoday.in/rss/1206574","category":"technology"},
   {"id":"tech-BBC","name":"Tech-BBC","url":"https://feeds.bbci.co.uk/news/technology/rss.xml","category":"technology"}
   
 ]
+
